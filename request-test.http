@@ -1,0 +1,268 @@
+
+###
+GET http://localhost:8765/filials
+
+###
+GET http://localhost:8765/filials/1
+
+###
+POST http://localhost:8765/filials/create
+Authorization: Basic admin@gmail.com admin
+Content-Type: application/json
+
+{
+  "address": "г. Новосибирск, Ленинский р-н, Ленина 34/5",
+  "open": "08:00",
+  "close": "21:00"
+}
+
+###
+PUT http://localhost:8765/filials/update
+Authorization: Basic admin@gmail.com admin
+Content-Type: application/json
+
+{
+  "id": 4,
+  "address": "г. Новосибирск, Ленинский р-н, Кутузова 56/8",
+  "open": "07:30",
+  "close": "21:00"
+}
+
+###
+DELETE http://localhost:8765/filials/delete?filialId=4
+Authorization: Basic admin@gmail.com admin
+
+###
+GET http://localhost:8765/departments
+
+###
+GET http://localhost:8765/departments/6
+
+###
+GET http://localhost:8765/departments/in-filial/2
+
+###
+POST http://localhost:8765/departments/create
+Authorization: Basic admin@gmail.com admin
+Content-Type: application/json
+
+{
+  "name": "Педиатрия",
+  "description": "Высококлассное отделение педиатрии"
+}
+
+###
+PUT http://localhost:8765/departments/update
+Authorization: Basic admin@gmail.com admin
+Content-Type: application/json
+
+{
+  "id": 11,
+  "name": "Педиатрия",
+  "description": "Высококлассное отделение педиатрии EDITED"
+}
+
+###
+DELETE http://localhost:8765/departments/delete?departmentId=11
+Authorization: Basic admin@gmail.com admin
+
+###
+POST http://localhost:8765/filials/add-department?filialId=1&departmentId=11
+Authorization: Basic admin@gmail.com admin
+
+###
+GET http://localhost:8765/authorities
+Authorization: Basic admin@gmail.com admin
+
+###
+GET http://localhost:8765/authorities/1
+Authorization: Basic admin@gmail.com admin
+
+###
+POST http://localhost:8765/authorities/create
+Content-Type: application/json
+Authorization: Basic admin@gmail.com admin
+
+{
+  "name": "MODERATOR"
+}
+
+###
+PUT http://localhost:8765/authorities/update
+Content-Type: application/json
+Authorization: Basic admin@gmail.com admin
+
+{
+  "id": 3,
+  "name": "MODERATOR-ADMIN"
+}
+
+###
+DELETE http://localhost:8765/authorities/delete?authorityId=3
+
+###
+GET http://localhost:8765/identities
+Authorization: Basic admin@gmail.com admin
+
+###
+GET http://localhost:8765/identities/server-stream
+Authorization: Basic admin@gmail.com admin
+
+###
+GET http://localhost:8765/identities/2
+Authorization: Basic doctor@gmail.com doctor
+
+###
+POST http://localhost:8765/identities/create
+Content-Type: application/json
+
+{
+  "email": "user@gmail.com",
+  "phone": "+79139037890",
+  "password": "user"
+}
+
+###
+PUT http://localhost:8765/identities/update
+Content-Type: application/json
+Authorization: Basic user@gmail.com user
+
+{
+  "id": 6,
+  "email": "user222@gmail.com",
+  "phone": "+73835678",
+  "password": "userEdit"
+}
+
+###
+GET http://localhost:8765/positions
+
+###
+GET http://localhost:8765/positions/1
+
+###
+GET http://localhost:8765/employees
+
+###
+GET http://localhost:8765/employees/1
+
+###
+POST http://localhost:8765/employees/create
+Authorization: Basic doctor@gmail.com doctor
+Content-Type: application/json
+
+{
+  "firstname": "Катаев",
+  "lastname": "Алексей",
+  "patronymic": "Игоревич",
+  "gender": "MALE",
+  "birthdate": "1985-04-23",
+  "about": "Об алексее Игоревиче кратко",
+  "identityId": 2,
+  "filialId": 1,
+  "departmentId": 2,
+  "positions": [
+    {"id": 4},
+    {"id": 9},
+    {"id": 10}
+  ]
+}
+
+###
+PUT http://localhost:8765/employees/update
+Authorization: Basic doctor@gmail.com doctor
+Content-Type: application/json
+
+{
+  "id": 2,
+  "firstname": "КатаевEDIT",
+  "lastname": "Алексей",
+  "patronymic": "ИгоревичEDIT",
+  "gender": "MALE",
+  "birthdate": "1985-04-23",
+  "about": "Об алексее Игоревиче краткоEDIT",
+  "identityId": 2,
+  "filialId": 2,
+  "departmentId": 2,
+  "positions": [
+    {"id": 4},
+    {"id": 10},
+    {"id": 6}
+  ]
+}
+
+###
+DELETE http://localhost:8765/employees/delete?employeeId=1
+Authorization: Basic doctor@gmail.com doctor
+
+###
+GET http://localhost:8765/patients
+Authorization: Basic doctor@gmail.com doctor
+
+###
+GET http://localhost:8765/patients/search?flp=Bur
+Authorization: Basic admin@gmail.com admin
+
+###
+GET http://localhost:8765/patients/by-id/1
+Authorization: Basic admin@gmail.com admin
+
+###
+POST http://localhost:8765/patients/create
+Content-Type: application/json
+
+{
+  "firstname": "Slava",
+  "lastname": "Burgas",
+  "patronymic": "Vasilich",
+  "gender": "MALE",
+  "birthdate": "2000-04-10",
+  "identityId": 4
+}
+
+###
+PUT http://localhost:8765/patients/update
+Content-Type: application/json
+
+{
+  "id": 4,
+  "firstname": "SlavaEDIT",
+  "lastname": "BurgasEDIT",
+  "patronymic": "Vasilich"
+}
+
+###
+DELETE http://localhost:8765/patients/delete?patientId=4
+
+###
+GET http://localhost:8765/appointments
+Authorization: Basic admin@gmail.com admin
+
+###
+GET http://localhost:8765/appointments/1
+Authorization: Basic doctor@gmail.com doctor
+
+###
+GET http://localhost:8765/appointments/by-patient/get?patientId=1
+Authorization: Basic burgassme@gmail.com cg3audio
+
+###
+GET http://localhost:8765/appointments/by-employee/get?employeeId=1
+Authorization: Basic doctor@gmail.com doctor
+
+###
+POST http://localhost:8765/appointments/create-by-patient
+Authorization: Basic zagorulko@gmail.com zagor
+Content-Type: application/json
+
+{
+  "firstname": "Zagorulko",
+  "lastname": "Boris",
+  "patronymic": "Urevich",
+  "gender": "MALE",
+  "date": "2025-07-18",
+  "hours": "15:50",
+  "employeeId": 1,
+  "patientId": 2,
+  "closed": false
+}

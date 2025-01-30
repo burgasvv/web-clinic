@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.burgas</groupId>
+    <artifactId>web-clinic</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>web-clinic</name>
+    <description>web-clinic</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>database-server</module>
+        <module>department-service</module>
+        <module>employee-service</module>
+        <module>gateway-server</module>
+        <module>identity-service</module>
+        <module>patient-service</module>
+        <module>appointment-service</module>
+    </modules>
+</project>
